@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- import jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -28,24 +30,15 @@
 <body>
   <!-- Content -->
   <!-- Navbar -->
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 m-5" width="44" height="44"
-    viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M4 6l16 0" />
-    <path d="M4 12l16 0" />
-    <path d="M4 18l16 0" />
-  </svg> -->
   <nav id="navbarPlaceholder"></nav>
   <br>
   <br>
   <!-- Main Content -->
   <div class="flex flex-col justify-center m-5">
-
-
     <!-- choose -->
     <section class="flex flex-col justify-center">
       <button id="choosedropbtn" onclick="toggleDropdown()" data-dropdown-toggle="dropdown"
-        class="justify-center py-8 text-black bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 text-center inline-flex items-center"
+        class="justify-center py-4 text-black border-solid border-zinc-500 border-2 font-medium rounded-lg text-sm px-5 text-center inline-flex items-center shadow-md"
         type="button">CHOOSE <svg class="w-2.5 h-2.5 ms-3" xmlns="http://www.w3.org/2000/svg" fill="none"
           viewBox="0 0 10 6">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -56,16 +49,16 @@
       <div id="dropdown" class="z-10 hidden bg-white text-black divide-y divide-gray-100 rounded-lg shadow">
         <ul class="py-2 text-sm text-black" aria-labelledby="dropdownDefaultButton">
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option 1</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('School Life')">School Life</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Career Resources')">Career Resources</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Buy & Sell')">Buy & Sell</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('General')">General</a>
           </li>
         </ul>
       </div>
@@ -75,29 +68,21 @@
     <br>
     <!-- Title -->
     <div class="mb-6">
-      <textarea id="title-input" class="block w-full h-16 text-black border bg-slate-200 rounded-md"
+      <textarea id="title-input" class="block w-full h-16 text-black border-solid border-zinc-500 border-2 rounded-md p-4 shadow-md"
         placeholder="Title"></textarea>
     </div>
     <br>
     <!-- body -->
     <div class="mb-6">
-      <textarea id="body-input" class="block w-full h-40 text-black border bg-slate-200 rounded-md"
+      <textarea id="body-input" class="block w-full h-40 text-black border-solid border-zinc-500 border-2 rounded-md p-4 shadow-md"
         placeholder="Body"></textarea>
     </div>
 
     <!-- submit button -->
-
     <div class="flex justify-end">
-      <button class="bg-green-300 w-max p-4 rounded-full px-6 right-0" id="submitbtn"
-        onclick="location.href='general.html'">Submit</button>
+      <button class="bg-blue-950 shadow-2xl text-white w-max p-4 rounded-full px-6 right-0" id="submitbtn"
+        onclick="submitForm()">Submit</button>
     </div>
-
-
-
-
-
-
-
   </div>
 
 
