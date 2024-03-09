@@ -1,5 +1,5 @@
 function autoGrow(element) {
-    element.style.height = "5px"; // Temporarily shrink to get the correct scrollHeight
+    element.style.height = "5px";
     element.style.height = element.scrollHeight + "px";
 }
 
@@ -32,6 +32,59 @@ function displayThreadInfo() {
 
 displayThreadInfo();
 
-function submitReply() {
-    console.log($(this).siblings().text);
+function submitReply(element) {
+    let params = new URL(window.location.href);
+    let threadID = params.searchParams.get("docID");
+
+    text = $(element).siblings().val();
+    console.log(text);
+    if (text) {
+        db.collection("threads").doc(threadID).collection("replies").add({
+            author: firebase.auth().currentUser.uid,
+            likes: [],
+            dislikes: [],
+            content: text,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        $(element).siblings().val("");
+
+        alert("Reply posted, refrech page to view reply.");
+    } else {
+        alert("The textfield is empty.");
+    }
 }
+
+function displayRepliesDynamically() {
+    let replyTemplate = document.getElementById("replyTemplate");
+    let params = new URL(window.location.href);
+    let threadID = params.searchParams.get("docID");
+
+    db.collection("threads")
+        .doc(threadID)
+        .collection("replies")
+        .get()
+        .then((allThreads) => {
+            allThreads.forEach((doc) => {
+                var content = doc.data().content;
+                var likes = doc.data().likes.length;
+                var dislikes = doc.data().dislikes.length;
+                var timestamp = doc.data().timestamp;
+                var date = new Date(timestamp.seconds * 1000);
+                let newReply = replyTemplate.content.cloneNode(true);
+
+                newReply.querySelector("#reply-content").innerHTML = content;
+                newReply.querySelector("#reply-timestamp").innerHTML = date
+                    .toDateString()
+                    .slice(4);
+                newReply.querySelector("#reply-likes-count").innerHTML = likes;
+                newReply.querySelector("#reply-dislikes-count").innerHTML =
+                    dislikes;
+
+                document
+                    .getElementById(`replyPlaceholder`)
+                    .appendChild(newReply);
+            });
+        });
+}
+
+displayRepliesDynamically();
