@@ -31,20 +31,3 @@ if (title === '' || body === '' || choice === 'CHOOSE') {
 location.href = 'general.html';
 }
 
-
-function submitForm() {
-// Get the input fields
-var fields = document.getElementsByTagName('input');
-}
-// Loop through the fields
-for (var i = 0; i < fields.length; i++) {
-  // If a field is empty
-  if (fields[i].value === '') {
-    // Alert the user and return to stop the function
-    alert('Please fill all the fields');
-    return;
-  }
-
-// If all fields are filled, navigate to general.html
-location.href = 'general.html';
-}
