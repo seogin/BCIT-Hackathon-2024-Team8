@@ -22,21 +22,21 @@ function submitForm() {
   var title = document.getElementById('title-input').value;
   var body = document.getElementById('body-input').value;
   var choice = document.getElementById('choosedropbtn').textContent;
-  var inputFile = document.getElementById('myFile').value;
-
+  var image_file = document.getElementById('imageFile').value;
 
   if (choice == 'School Life') {
     choice = 'schoolLife';
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
+    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -45,13 +45,14 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
+    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -60,13 +61,14 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: []
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
+    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -75,13 +77,14 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: []
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
+    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
