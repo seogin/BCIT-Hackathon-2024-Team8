@@ -28,13 +28,14 @@
 <body>
   <!-- Content -->
   <!-- Navbar -->
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 m-5" width="44" height="44"
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 m-5" width="44" height="44"
     viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M4 6l16 0" />
     <path d="M4 12l16 0" />
     <path d="M4 18l16 0" />
-  </svg>
+  </svg> -->
+  <nav id="navbarPlaceholder"></nav>
   <br>
   <br>
   <!-- Main Content -->
@@ -64,8 +65,7 @@
             <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2"
-              onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
           </li>
         </ul>
       </div>
@@ -81,13 +81,15 @@
     <br>
     <!-- body -->
     <div class="mb-6">
-      <textarea id="body-input" class="block w-full h-40 text-black border bg-slate-200 rounded-md" placeholder="Body"></textarea>
+      <textarea id="body-input" class="block w-full h-40 text-black border bg-slate-200 rounded-md"
+        placeholder="Body"></textarea>
     </div>
 
     <!-- submit button -->
 
     <div class="flex justify-end">
-      <button class="bg-green-300 w-max p-4 rounded-full px-6 right-0" id="submitbtn" onclick="location.href='general.html'">Submit</button>
+      <button class="bg-green-300 w-max p-4 rounded-full px-6 right-0" id="submitbtn"
+        onclick="location.href='general.html'">Submit</button>
     </div>
 
 
@@ -105,6 +107,7 @@
   <script src="./scripts/firebaseAPI_hackathon.js"></script>
   <script src="./scripts/authentication.js"></script>
   <script src="./scripts/makeboard.js"></script>
+  <script src="./scripts/skeleton.js"></script>
 </body>
 
 </html>
