@@ -12,13 +12,13 @@
 
         <ul class="text-center">
             <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
-                    href="../schoolLife.html">School Life</button></li>
+                    href="../schoolLife.html" onclick="goToSchoolLife()" id="schoolLife">School Life</button></li>
             <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
-                    href="../career.html">Career</button></li>
+                    href="../career.html" id="career" onclick="goToCareer()">Career</button></li>
             <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
-                    href="../buysell.html">Buy & Sell</button></li>
+                    href="../buysell.html" id="buySell" onclick="goToBuySell()">Buy & Sell</button></li>
             <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
-                    href="../general.html">General: Let's Chat!</button></li>
+                    href="../general.html" id="general" onclick="goToGeneral()">General: Let's Chat!</button></li>
         </ul>
         <div class="text-xs text-right text-white"><span style="position: absolute; bottom: 10pt; right: 10pt;">
                 <a onclick="logout()" class="nav-link active" aria-current="page" href="">Log
@@ -41,7 +41,7 @@
                 </svg>
             </button>
             <!-- Right aligned search bar -->
-            <div class="search-container">
+            <div class="search-container border-gray-300 border-2 p-1 rounded-md">
                 <input type="text" placeholder="Search..">
             </div>
         </div>
@@ -76,3 +76,7 @@
 </script>
 
 </div>
+
+
+<!-- js -->
+<script src="../scripts/navbar.js"></script>
