@@ -22,7 +22,6 @@ function submitForm() {
   var title = document.getElementById('title-input').value;
   var body = document.getElementById('body-input').value;
   var choice = document.getElementById('choosedropbtn').textContent;
-  var image_file = document.getElementById('imageFile').value;
 
   if (choice == 'School Life') {
     choice = 'schoolLife';
