@@ -22,6 +22,7 @@ function submitForm() {
   var title = document.getElementById('title-input').value;
   var body = document.getElementById('body-input').value;
   var choice = document.getElementById('choosedropbtn').textContent;
+  var image_file = document.getElementById('imageFile').value;
 
   if (choice == 'School Life'){
     choice = 'schoolLife';
@@ -35,6 +36,7 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
+    image: image_file
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -50,6 +52,7 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
+    image: image_file
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -64,7 +67,8 @@ function submitForm() {
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
     likes: [],
-    dislikes: []
+    dislikes: [],
+    image: image_file
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -79,7 +83,8 @@ function submitForm() {
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
     likes: [],
-    dislikes: []
+    dislikes: [],
+    image: image_file
     }).then(function () {
     location.href = choice + '.html';
     });
