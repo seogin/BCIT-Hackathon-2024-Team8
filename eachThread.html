@@ -35,6 +35,53 @@
         <link rel="stylesheet" href="./styles/icons.css" />
     </head>
 
+<body>
+    <!-- Content -->
+    <!-- Navbar -->
+    <nav id="navbarPlaceholder"></nav>
+    <!-- Main Content -->
+    <main class="m-10">
+        <div class="flex flex-row container justify-between items-center border-y border-black">
+            <div class="flex flex-row items-center justify-start gap-3">
+                <span class="material-symbols-outlined md-48">
+                    account_circle
+                </span>
+                <div class="flex flex-col justify-center items-start">
+                    <p class="font-bold">Anonymous</p>
+                    <p class="text-sm" id="timestamp">date</p>
+                </div>
+            </div>
+            <div class="flex flex-row items-center justify-end gap-3">
+                <div class="flex flex-row gap-1 justify-center items-center">
+                    <span class="material-symbols-outlined md-18">
+                        thumb_up
+                    </span>
+                    <p id="likes-count">0</p>
+                    <span class="material-symbols-outlined md-18 ms-3">
+                        thumb_down
+                    </span>
+                    <p id="dislikes-count">0</p>
+                </div>
+                <span class="material-symbols-outlined md-24"> star </span>
+            </div>
+        </div>
+        <article class="container flex flex-col justify-evenly items-start py-5 border-b border-black">
+            <p class="text-xl font-bold" id="title">Title</p>
+            <p id="description">Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+                exercitationem eveniet cupiditate quasi fugiat in, beatae saepe necessitatibus quod. Autem blanditiis
+                quos nisi recusandae expedita quasi quas, voluptas sapiente ipsam.</p>
+        </article>
+        <footer class="container flex flex-col justify-center items-start">
+            <div class="container flex flex-col items-start">
+                <div class="text-md my-2">Replies</div>
+                <div class="addReply flex flex-row">
+                    <textarea class="border border-slate-400 p-2" placeholder="Start writing comments"
+                        name="reply-input" id="reply-input" cols="30" rows="1"></textarea>
+                    <!-- submit button -->
+                    <button class="flex bg-slate-200 rounded-md shadow-2xl w-10 py-2 px-2 ms-2 right-0" id="replybtn"
+                        onclick="submitReply()"><span class="material-symbols-outlined">
+                            keyboard_return
+                        </span></button>
     <body>
         <!-- Content -->
         <!-- Navbar -->
@@ -100,6 +147,43 @@
             </footer>
         </main>
 
+    <template id="commentTemplate">
+        <div class="conatainer flex flex-row">
+            <div class="w-10">
+                <span class="material-symbols-outlined">
+                    subdirectory_arrow_right
+                </span>
+            </div>
+            <div class="w-90 flex flex-row justify-between bg-slate-100 rounded-xl p-4 gap-4 shadow-md">
+                <div class="flex flex-col justify-between items-start gap-3">
+                    <div class="flex flex-col justify-center items-start">
+                        <p class="text-xl" id="author">Anonymous</p>
+                        <p class="text-xs" id="timestamp">date</p>
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Molestiae laborum eos accusantium iure odio
+                        quia nulla adipisci eum ducimus tempore. Non
+                        incidunt dolorum illum, quo dolorem sunt optio est
+                        asperiores.
+                    </div>
+                </div>
+                <div class="items-start">
+                    <div class="flex flex-row gap-1 justify-end items-center">
+                        <span class="material-symbols-outlined md-18">
+                            thumb_up
+                        </span>
+                        <p id="likes-count">0</p>
+                        <span class="material-symbols-outlined md-18 ms-2">
+                            thumb_down
+                        </span>
+                        <p id="dislikes-count">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Footer -->
         <template id="commentTemplate">
             <div class="conatainer flex flex-row">
                 <div class="w-10">
