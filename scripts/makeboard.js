@@ -28,13 +28,13 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.uid,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -43,13 +43,13 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.uid,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -58,13 +58,13 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.uid,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -73,13 +73,13 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-      author: firebase.auth().currentUser.displayName,
-      category: choice,
-      description: body,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      title: title,
-      likes: [],
-      dislikes: [],
+    author: firebase.auth().currentUser.uid,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
