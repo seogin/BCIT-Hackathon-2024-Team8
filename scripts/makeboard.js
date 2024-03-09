@@ -43,3 +43,28 @@ if (title === '' || body === '' || choice === 'CHOOSE') {
 location.href = choice + '.html';
 }
 
+
+function submitThread() {
+var title = document.getElementById('title-input').value;
+var body = document.getElementById('body-input').value;
+var choice = document.getElementById('choosedropbtn').textContent;
+
+if (choice == 'School Life'){
+  choice = 'schoolLife';
+} else if (choice == 'Career Resources'){
+  choice = 'career';
+} else if (choice == 'Buy & Sell'){
+  choice = 'buySell';
+} else if (choice == 'General'){
+choice = 'general';}
+
+var thread = db.collection("threads");}
+
+thread.add({
+  author: firebase.auth().currentUser.displayName,
+  category: choice,
+  description: body,
+  timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+  title: title,
+
+  })
