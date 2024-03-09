@@ -33,6 +33,8 @@ function submitForm() {
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -46,6 +48,8 @@ function submitForm() {
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
+    likes: [],
+    dislikes: [],
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -59,6 +63,8 @@ function submitForm() {
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
+    likes: [],
+    dislikes: []
     }).then(function () {
     location.href = choice + '.html';
     });
@@ -72,6 +78,8 @@ function submitForm() {
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
+    likes: [],
+    dislikes: []
     }).then(function () {
     location.href = choice + '.html';
     });
