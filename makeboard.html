@@ -28,20 +28,11 @@
 <body>
   <!-- Content -->
   <!-- Navbar -->
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 m-5" width="44" height="44"
-    viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M4 6l16 0" />
-    <path d="M4 12l16 0" />
-    <path d="M4 18l16 0" />
-  </svg> -->
   <nav id="navbarPlaceholder"></nav>
   <br>
   <br>
   <!-- Main Content -->
   <div class="flex flex-col justify-center m-5">
-
-
     <!-- choose -->
     <section class="flex flex-col justify-center">
       <button id="choosedropbtn" onclick="toggleDropdown()" data-dropdown-toggle="dropdown"
@@ -56,16 +47,16 @@
       <div id="dropdown" class="z-10 hidden bg-white text-black divide-y divide-gray-100 rounded-lg shadow">
         <ul class="py-2 text-sm text-black" aria-labelledby="dropdownDefaultButton">
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option 1</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option 1')">Option 1</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option 2')">Option 2</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option 3')">Option 3</a>
           </li>
           <li>
-            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option 4')">Option 4</a>
           </li>
         </ul>
       </div>
@@ -86,18 +77,10 @@
     </div>
 
     <!-- submit button -->
-
     <div class="flex justify-end">
       <button class="bg-green-300 w-max p-4 rounded-full px-6 right-0" id="submitbtn"
-        onclick="location.href='general.html'">Submit</button>
+        onclick="submitForm()">Submit</button>
     </div>
-
-
-
-
-
-
-
   </div>
 
 
