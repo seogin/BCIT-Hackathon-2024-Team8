@@ -41,7 +41,7 @@ function submitForm() {
   var thread = db.collection("threads");
 
   thread.add({
-    // author: firebase.auth().currentUser.displayName,
+    author: firebase.auth().currentUser.displayName,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -49,21 +49,4 @@ function submitForm() {
   }).then(function () {
     location.href = choice + '.html';
   });
-} // This closing brace was missing
-
-
-// function submitThread() {
-//   var title = document.getElementById('title-input').value;
-//   var body = document.getElementById('body-input').value;
-//   var choice = document.getElementById('choosedropbtn').textContent;
-
-//   var thread = db.collection("threads");
-
-//   thread.add({
-//     // author: firebase.auth().currentUser.displayName,
-//     category: choice,
-//     description: body,
-//     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-//     title: title,
-//   });
-// }
+} 
