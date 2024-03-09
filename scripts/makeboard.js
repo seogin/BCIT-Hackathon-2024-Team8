@@ -35,7 +35,6 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
-    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -51,7 +50,6 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
-    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -67,7 +65,6 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
-    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -83,7 +80,6 @@ function submitForm() {
     title: title,
     likes: [],
     dislikes: [],
-    image: image_file
     }).then(function () {
       location.href = choice + '.html';
     });
