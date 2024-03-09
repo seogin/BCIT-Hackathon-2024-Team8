@@ -38,19 +38,38 @@ function thumbsUp() {
     }
 
     var user = firebase.auth().currentUser.uid;
-    var thread = db.collection("threads");
+    var thread = db.collection("threads").doc(ID);
 
-    thread.doc(ID).update({
-        likes: firebase.firestore.FieldValue.arrayUnion(user),
-    }).then(() => {
-        console.log("Document successfully updated!");
-    }).catch((error) => {
-        console.error("Error updating document: ", error);
-    });
+    thread.get().then((doc) => {
+        if (doc.data().likes.includes(user)) {
+            console.log("something")
+            thread
+                .update({
+                    likes: firebase.firestore.FieldValue.arrayRemove(user),
+                })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
+        else {
+            thread
+                .update({
+                    likes: firebase.firestore.FieldValue.arrayUnion(user),
+                })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
+    })
+
+    
 }
-
-
-
 
 function displayThreadInfo() {
     let params = new URL(window.location.href);
