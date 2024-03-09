@@ -80,3 +80,7 @@ function displayThreadInfo() {
 }
 
 displayThreadInfo();
+
+function submitReply() {
+    console.log($(this).siblings().text);
+}
