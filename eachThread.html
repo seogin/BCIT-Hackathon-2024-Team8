@@ -38,7 +38,7 @@
     <nav id="navbarPlaceholder"></nav>
     <!-- Main Content -->
     <main class="m-10">
-        <div class="flex flex-row container justify-between items-center p-3 border-y border-black">
+        <div class="flex flex-row container justify-between items-center border-y border-black">
             <div class="flex flex-row items-center justify-start gap-3">
                 <span class="material-symbols-outlined md-48">
                     account_circle
@@ -64,19 +64,21 @@
         </div>
         <article class="container flex flex-col justify-evenly items-start py-5 border-b border-black">
             <p class="text-xl font-bold" id="title">Title</p>
-            <p id="description">Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur exercitationem eveniet cupiditate quasi fugiat in, beatae saepe necessitatibus quod. Autem blanditiis quos nisi recusandae expedita quasi quas, voluptas sapiente ipsam.</p>
+            <p id="description">Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+                exercitationem eveniet cupiditate quasi fugiat in, beatae saepe necessitatibus quod. Autem blanditiis
+                quos nisi recusandae expedita quasi quas, voluptas sapiente ipsam.</p>
         </article>
         <footer class="container flex flex-col justify-center items-start">
-            <div class="container flex flex-col gap-5 items-start">
-                <div class="text-xl">Replies</div>
-                <div class="addReply flex flex-row  ">
-                    <textarea class="basis-3/4 border border-slate-400 p-2" placeholder="Start writing comments"
+            <div class="container flex flex-col items-start">
+                <div class="text-md my-2">Replies</div>
+                <div class="addReply flex flex-row">
+                    <textarea class="border border-slate-400 p-2" placeholder="Start writing comments"
                         name="reply-input" id="reply-input" cols="30" rows="1"></textarea>
                     <!-- submit button -->
-                    <div class="flex">
-                        <button class="bg-slate-200 shadow-2xl w-max py-1 px-2 ms-2 right-0" id="replybtn"
-                            onclick="submitReply()">Reply</button>
-                    </div>
+                    <button class="flex bg-slate-200 rounded-md shadow-2xl w-10 py-2 px-2 ms-2 right-0" id="replybtn"
+                        onclick="submitReply()"><span class="material-symbols-outlined">
+                            keyboard_return
+                        </span></button>
                 </div>
             </div>
             <div class="container flex falex-col justify-center items-center gap-3" id="commentsPlaceholder"></div>
@@ -117,33 +119,9 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
     </template>
     <!-- Footer -->
-=======
-            <article
-                class="container flex flex-col justify-evenly items-start p-6 gap-3 border-b border-black">
-                <p class="text-xl font-bold" id="title">Title</p>
-                <p id="description">Description</p>
-            </article>
-            <footer
-                class="container flex flex-col justify-center items-start gap-6 p-6">
-                <div class="container flex flex-row gap-10 items-start">
-                    <div class="text-xl">Replies</div>
-                    <textarea
-                        class="basis-3/4 border border-slate-400 p-2"
-                        placeholder="Start writing comments"
-                        name="reply-input"
-                        id="reply-input"
-                        oninput="autoGrow(this)"></textarea>
-                </div>
-                <div
-                    class="container flex flex-col justify-center items-center gap-3"
-                    id="commentsPlaceholder"></div>
-            </footer>
-        </main>
->>>>>>> 3b4ee8616bdd91921fde5ff59b4508e8a3830bc0
 
     <!-- Scripts -->
     <script src="./scripts/firebaseAPI_hackathon.js"></script>
