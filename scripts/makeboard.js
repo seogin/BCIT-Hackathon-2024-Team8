@@ -19,52 +19,65 @@ toggleDropdown();
 }
 
 function submitForm() {
-var title = document.getElementById('title-input').value;
-var body = document.getElementById('body-input').value;
-var choice = document.getElementById('choosedropbtn').textContent;
+  var title = document.getElementById('title-input').value;
+  var body = document.getElementById('body-input').value;
+  var choice = document.getElementById('choosedropbtn').textContent;
 
-if (choice == 'School Life'){
-  choice = 'schoolLife';
-} else if (choice == 'Career Resources'){
-  choice = 'career';
-} else if (choice == 'Buy & Sell'){
-  choice = 'buySell';
-} else if (choice == 'General'){
-  choice = 'general';
-} else {
-  choice = 'CHOOSE';
-}
+  if (choice == 'School Life'){
+    choice = 'schoolLife';
+    var thread = db.collection("threads");
 
-if (title === '' || body === '' || choice === 'CHOOSE') {
-  alert('Please fill all the fields');
-  return;
-}
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else if (choice == 'Career Resources'){
+    choice = 'career';
+    var thread = db.collection("threads");
 
-location.href = choice + '.html';
-}
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else if (choice == 'Buy & Sell'){
+    choice = 'buySell';
+    var thread = db.collection("threads");
 
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else if (choice == 'General'){
+    choice = 'general';
+    var thread = db.collection("threads");
 
-function submitThread() {
-var title = document.getElementById('title-input').value;
-var body = document.getElementById('body-input').value;
-var choice = document.getElementById('choosedropbtn').textContent;
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else {
+      alert('Please fill all the fields');
+      return;
+    }
+  }
 
-if (choice == 'School Life'){
-  choice = 'schoolLife';
-} else if (choice == 'Career Resources'){
-  choice = 'career';
-} else if (choice == 'Buy & Sell'){
-  choice = 'buySell';
-} else if (choice == 'General'){
-choice = 'general';}
-
-var thread = db.collection("threads");}
-
-thread.add({
-  author: firebase.auth().currentUser.displayName,
-  category: choice,
-  description: body,
-  timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  title: title,
-
-  })
