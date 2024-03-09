@@ -35,7 +35,8 @@ function submitForm() {
       description: body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       title: title,
-      image: inputFile,
+      likes: [],
+      dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -49,7 +50,8 @@ function submitForm() {
       description: body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       title: title,
-      image: inputFile,
+      likes: [],
+      dislikes: [],
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -63,7 +65,8 @@ function submitForm() {
       description: body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       title: title,
-      image: inputFile,
+      likes: [],
+      dislikes: []
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -77,7 +80,8 @@ function submitForm() {
       description: body,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       title: title,
-      image: inputFile,
+      likes: [],
+      dislikes: []
     }).then(function () {
       location.href = choice + '.html';
     });
@@ -87,3 +91,8 @@ function submitForm() {
   }
 }
 
+
+function autoGrow(element) {
+  element.style.height = "5px"; // Temporarily shrink to get the correct scrollHeight
+  element.style.height = (element.scrollHeight) + "px";
+}

@@ -16,8 +16,8 @@ function displayCardsDynamically(collection) {
                 newThread.querySelector("#timestamp").innerHTML = timestamp;
                 newThread.querySelector("#likes-count").innerHTML = likes;
                 newThread.querySelector("#dislikes-count").innerHTML = dislikes;
-                // newThread.querySelector("a").href =
-                //     "general.html?docID=" + docID;
+                newThread.querySelector("a").href =
+                    "eachThread.html?docID=" + docID;
 
                 document
                     .getElementById(`threadPlaceholder`)
