@@ -25,28 +25,59 @@ function submitForm() {
 
   if (choice == 'School Life'){
     choice = 'schoolLife';
-  } else if (choice == 'Career Resources'){
-    choice = 'career';
-  } else if (choice == 'Buy & Sell'){
-    choice = 'buySell';
-  } else if (choice == 'General'){
-    choice = 'general';
-  } else {
-    if (title === '' || body === '' || choice === 'CHOOSE') {
-      alert('Please fill all the fields');
-      return;
-    }
-  }
+    var thread = db.collection("threads");
 
-  var thread = db.collection("threads");
-
-  thread.add({
+    thread.add({
     author: firebase.auth().currentUser.displayName,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
-  }).then(function () {
+    }).then(function () {
     location.href = choice + '.html';
-  });
-} 
+    });
+  } else if (choice == 'Career Resources'){
+    choice = 'career';
+    var thread = db.collection("threads");
+
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else if (choice == 'Buy & Sell'){
+    choice = 'buySell';
+    var thread = db.collection("threads");
+
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else if (choice == 'General'){
+    choice = 'general';
+    var thread = db.collection("threads");
+
+    thread.add({
+    author: firebase.auth().currentUser.displayName,
+    category: choice,
+    description: body,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    title: title,
+    }).then(function () {
+    location.href = choice + '.html';
+    });
+  } else {
+      alert('Please fill all the fields');
+      return;
+    }
+  }
+
