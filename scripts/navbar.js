@@ -14,3 +14,7 @@ function goToGeneral() {
 function goToBuySell() {
     window.location.href = "buysell.html";
 }
+
+function goToProfile() {
+    window.location.href = "profile.html";
+}
