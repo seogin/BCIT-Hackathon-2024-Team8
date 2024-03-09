@@ -29,7 +29,7 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-    author: firebase.auth().currentUser.displayName,
+    author: firebase.auth().currentUser.uid,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -45,7 +45,7 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-    author: firebase.auth().currentUser.displayName,
+    author: firebase.auth().currentUser.uid,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -61,7 +61,7 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-    author: firebase.auth().currentUser.displayName,
+    author: firebase.auth().currentUser.uid,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -77,7 +77,7 @@ function submitForm() {
     var thread = db.collection("threads");
 
     thread.add({
-    author: firebase.auth().currentUser.displayName,
+    author: firebase.auth().currentUser.uid,
     category: choice,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
