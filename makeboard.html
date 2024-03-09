@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>campUS</title>
+  <meta name="campUS" content="campUS" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Unica+One&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Content -->
+  <!-- Navbar -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 m-5" width="44" height="44"
+    viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M4 6l16 0" />
+    <path d="M4 12l16 0" />
+    <path d="M4 18l16 0" />
+  </svg>
+  <br>
+  <br>
+  <!-- Main Content -->
+  <div class="flex flex-col justify-center m-5">
+
+
+    <!-- choose -->
+    <section class="flex flex-col justify-center">
+      <button id="choosedropbtn" onclick="toggleDropdown()" data-dropdown-toggle="dropdown"
+        class="justify-center py-8 text-black bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 text-center inline-flex items-center"
+        type="button">CHOOSE <svg class="w-2.5 h-2.5 ms-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 4 4 4-4" />
+        </svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="dropdown" class="z-10 hidden bg-white text-black divide-y divide-gray-100 rounded-lg shadow">
+        <ul class="py-2 text-sm text-black" aria-labelledby="dropdownDefaultButton">
+          <li>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option 1</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2" onclick="changeButtonText('Option')">Option</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2"
+              onclick="changeButtonText('Option')">Option</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <br>
+    <br>
+    <!-- Title -->
+    <div class="mb-6">
+      <textarea id="title-input" class="block w-full h-16 text-black border bg-slate-200 rounded-md"
+        placeholder="Title"></textarea>
+    </div>
+    <br>
+    <!-- body -->
+    <div class="mb-6">
+      <textarea id="body-input" class="block w-full h-40 text-black border bg-slate-200 rounded-md" placeholder="Body"></textarea>
+    </div>
+
+    <!-- submit button -->
+
+    <div class="flex justify-end">
+      <button class="bg-green-300 w-max p-4 rounded-full px-6 right-0" id="submitbtn" onclick="location.href='general.html'">Submit</button>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+  <!-- Footer -->
+
+  <!-- Scripts -->
+  <script src="./scripts/firebaseAPI_hackathon.js"></script>
+  <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/makeboard.js"></script>
+</body>
+
+</html>

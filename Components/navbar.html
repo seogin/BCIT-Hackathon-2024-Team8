@@ -1,14 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Sidebar -->
+<div class="absolute bg-blue-950 text-white w-56 min-h-screen overflow-y-auto transition-transform transform -translate-x-full ease-in-out duration-300"
+    id="sidebar">
+    <!-- Your Sidebar Content -->
+    <div class="p-4">
+        <div class="text-4xl" style="font-family: Unica One;">
+            <a href="./main.html"><span style="color: #3BB1B3 ;">Camp</span><span style="color: #C07272;">US</span></a>
+        </div>
+        <div id="profilePlaceholder" class="my-20 mx-5 text-center text-blue-950 py-16 bg-white rounded-full">
+            Profile
+        </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+        <ul class="text-center">
+            <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
+                    href="./school-life.html">School Life</button></li>
+            <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
+                    href="./career.html">Career</button></li>
+            <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
+                    href="./buysell.html">Buy & Sell</button></li>
+            <li class="mb-5 bg-slate-200 text-blue-950 rounded-md font-bold"><button class="nav-link py-4"
+                    href="./general.html">General: Let's Chat!</button></li>
+        </ul>
+        <div class="text-xs text-right text-white"><span style="position: absolute; bottom: 10pt; right: 10pt;">
+                <a onclick="logout()" class="nav-link active" aria-current="page" href="">Log
+                    out</a>
+        </div>
+    </div>
+</div>
 
-<body>
 
-</body>
+<!-- Content -->
+<div class="flex-1 flex flex-col overflow-hidden">
+    <!-- Navbar -->
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center py-4 px-2">
+            <button class="text-gray-500" id="open-sidebar">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+            <!-- Right aligned search bar -->
+            <div class="search-container">
+                <input type="text" placeholder="Search..">
+            </div>
+        </div>
+    </div>
+</div>
 
-</html>
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarButton = document.getElementById('open-sidebar');
+
+    openSidebarButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.toggle('-translate-x-full');
+    });
+
+    // Close the sidebar when clicking outside of it
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !openSidebarButton.contains(e.target)) {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
+
+    function logout() {
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            window.location.href = "../index.html";
+            console.log("Logging out user..");
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+</script>
+
+</div>
