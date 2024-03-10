@@ -22,13 +22,6 @@ function updateFavorite() {
             })
             .catch((error) => { console.error("Error removing thread from favorites: ", error) });
     }
-    else {
-        userFavoritesRef.set({mockData: "something"}) // You might want to store additional info here
-            .then(() => {
-                console.log("Thread added to favorites")
-                // window.location.href = params;
-            })
-            .catch((error) => { console.error("Error adding thread to favorites: ", error) });
     }
 
     // userFavoritesRef.get().then((allThreads) => {
