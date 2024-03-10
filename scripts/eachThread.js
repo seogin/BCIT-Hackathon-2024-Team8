@@ -3,6 +3,16 @@ function autoGrow(element) {
     element.style.height = element.scrollHeight + "px";
 }
 
+function star() {
+    var starColor = document.getElementById("star").style.color;
+    if (starColor == "black") {
+        document.getElementById("star").style.color = "rgb(255, 204, 0)";
+    } else {
+        document.getElementById("star").style.color = "black";
+    }
+}
+
+
 function thumbsUp() {
     if (!firebase.auth().currentUser) {
         console.error("No authenticated user found.");
@@ -90,7 +100,7 @@ function thumbsDown() {
                     console.error("Error updating document: ", error);
                 });
         }
-    })   
+    })
 }
 
 function displayThreadInfo() {

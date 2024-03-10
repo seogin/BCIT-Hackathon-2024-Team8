@@ -50,16 +50,16 @@
             </div>
             <div class="flex flex-row items-center justify-end gap-3">
                 <div class="flex flex-row gap-1 justify-center items-center">
-                    <span class="material-symbols-outlined md-18" onclick="thumbsUp()">
+                    <span id="thumbsUp" class="material-symbols-outlined md-18 cursor-pointer" onclick="thumbsUp()">
                         thumb_up
                     </span>
                     <p id="thread-likes-count">0</p>
-                    <span class="material-symbols-outlined md-18 ms-3" onclick="thumbsDown()">
+                    <span id="thumbsDown" class="material-symbols-outlined md-18 ms-3 cursor-pointer" onclick="thumbsDown()">
                         thumb_down
                     </span>
                     <p id="thread-dislikes-count">0</p>
                 </div>
-                <span class="material-symbols-outlined md-24"> star </span>
+                <span id="star" class="material-symbols-outlined md-24 cursor-pointer" onclick="star()"> star </span>
             </div>
         </div>
         <article class="container flex flex-col justify-evenly items-start py-5 border-b border-black">
