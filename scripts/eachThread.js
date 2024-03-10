@@ -7,8 +7,34 @@ function star() {
     var starColor = document.getElementById("star").style.color;
     if (starColor == "black") {
         document.getElementById("star").style.color = "rgb(255, 204, 0)";
+        updateFavorite(true); // Add to favorites
     } else {
         document.getElementById("star").style.color = "black";
+        updateFavorite(false); // Remove from favorites
+    }
+}
+
+function updateFavorite(shouldFavorite) {
+    let params = new URL(window.location.href);
+    let threadID = params.searchParams.get("docID");
+    if (!threadID) {
+        console.error("Document ID not found in URL.");
+        return;
+    }
+
+    var userID = firebase.auth().currentUser.uid;
+    var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID);
+
+    if (shouldFavorite) {
+        // Add to favorites
+        userFavoritesRef.set({}) // You might want to store additional info here
+            .then(() => console.log("Thread added to favorites"))
+            .catch(error => console.error("Error adding thread to favorites: ", error));
+    } else {
+        // Remove from favorites
+        userFavoritesRef.delete()
+            .then(() => console.log("Thread removed from favorites"))
+            .catch(error => console.error("Error removing thread from favorites: ", error));
     }
 }
 
