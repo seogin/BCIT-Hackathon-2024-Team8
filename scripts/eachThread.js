@@ -64,6 +64,7 @@ function thumbsUp() {
                 })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    window.location.href = params;
                 })
                 .catch((error) => {
                     console.error("Error updating document: ", error);
@@ -76,6 +77,7 @@ function thumbsUp() {
                 })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    window.location.href = params;
                 })
                 .catch((error) => {
                     console.error("Error updating document: ", error);
@@ -109,6 +111,7 @@ function thumbsDown() {
                 })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    window.location.href = params;
                 })
                 .catch((error) => {
                     console.error("Error updating document: ", error);
@@ -121,6 +124,7 @@ function thumbsDown() {
                 })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    window.location.href = params;
                 })
                 .catch((error) => {
                     console.error("Error updating document: ", error);
@@ -171,10 +175,11 @@ function submitReply(element) {
             dislikes: [],
             content: text,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => {
+            console.log("Reply successfully uploaded!")
+            window.location.href = params;
         });
-        $(element).siblings().val("");
-
-        alert("Reply posted, refrech page to view reply.");
     } else {
         alert("The textfield is empty.");
     }
