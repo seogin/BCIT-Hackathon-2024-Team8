@@ -41,6 +41,9 @@ function displaySavedDoc() {
             newThread.querySelector("#title").textContent = title;
             newThread.querySelector("#likeCount").textContent = Array.isArray(likes) ? likes.length : 0;
             newThread.querySelector("#dislikeCount").textContent = Array.isArray(dislikes) ? dislikes.length : 0;
+            var docID = doc.id;
+
+            newThread.querySelector("a").href = `eachThread.html?docID=${docID}`;
 
             document.getElementById("placeholderForSaved").appendChild(newThread);
           })
