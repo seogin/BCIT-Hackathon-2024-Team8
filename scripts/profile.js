@@ -53,3 +53,45 @@ function displaySavedDoc() {
       console.error("Error getting favorites collection:", error);
     });
 }
+
+
+// Function for MY POSTS
+
+// Wait for Firebase to initialize
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in, call your function to display the user's posts
+    displayMyPosts();
+  } else {
+    // User is signed out, you can handle this case if needed
+    console.log("User is not signed in.");
+  }
+});
+
+// Function to display the user's posts
+function displayMyPosts() {
+  let saveTemplate = document.getElementById("MyTemplate");
+  let userID = firebase.auth().currentUser.uid;
+  console.log(userID);
+
+  db.collection("threads")
+    .where("author", "==", userID)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const { title, category, likes, dislikes } = data;
+        
+        const newThread = saveTemplate.content.cloneNode(true);
+        newThread.querySelector("#Mycategory").textContent = category;
+        newThread.querySelector("#Mytitle").textContent = title;
+        newThread.querySelector("#MylikeCount").textContent = Array.isArray(likes) ? likes.length : 0;
+        newThread.querySelector("#MydislikeCount").textContent = Array.isArray(dislikes) ? dislikes.length : 0;
+
+        document.getElementById("placeholderForMyPost").appendChild(newThread);
+      });
+    })
+    .catch(error => {
+      console.error("Error getting thread documents:", error);
+    });
+}
