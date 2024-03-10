@@ -1,3 +1,37 @@
+function sortAndDisplay(arr) {
+    time = Array();
+    let threadPlaceholder = document.getElementById("threadPlaceholder");
+
+    for (let i = 0; i < arr.length; i++) {
+        time.push(arr[i][1]);
+    }
+
+    for (let i = 1; i < time.length; i++) {
+        let current = time[i];
+        let j = i - 1;
+
+        while (j >= 0 && time[j] < current) {
+            time[j + 1] = time[j];
+            j--;
+        }
+        time[j + 1] = current;
+    }
+
+    nodes = Array();
+    for (let i = 0; i < time.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (time[i] == arr[j][1]) {
+                nodes.push(arr[j][0]);
+                break;
+            }
+        }
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+        threadPlaceholder.appendChild(nodes[i]);
+    }
+}
+
 function displayCardsDynamically(collection, category) {
   let threadTemplate = document.getElementById("threadTemplate");
   let threadPlaceholder = document.getElementById("threadPlaceholder");
@@ -10,6 +44,7 @@ function displayCardsDynamically(collection, category) {
     .where("category", "==", category) // Filter by category
     .get()
     .then((querySnapshot) => {
+      arr = Array();
       querySnapshot.forEach((doc) => {
         var data = doc.data();
         var title = data.title;
@@ -27,8 +62,9 @@ function displayCardsDynamically(collection, category) {
         newThread.querySelector("a").href = `eachThread.html?docID=${docID}`;
 
         // Append the new thread to the placeholder
-        threadPlaceholder.appendChild(newThread);
-      });
+        arr.push([newThread, timestamp]);
+            });
+            sortAndDisplay(arr);
     })
     .catch((error) => {
       console.error("Error fetching threads:", error);
