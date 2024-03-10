@@ -221,8 +221,7 @@ function displayRepliesDynamically() {
 
                 newReply.querySelector("#reply-content").innerHTML = content;
                 newReply.querySelector("#reply-timestamp").innerHTML = date
-                    .toDateString()
-                    .slice(4);
+                    .toLocaleString()
                 newReply.querySelector("#reply-likes-count").innerHTML = likes;
                 newReply.querySelector("#reply-dislikes-count").innerHTML =
                     dislikes;
