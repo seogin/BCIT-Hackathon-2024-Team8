@@ -2,6 +2,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in, call your function to display saved documents
         displayThumbsUp()
+        displayThumbsDown()
     } else {
         // User is signed out, you can handle this case if needed
         console.log("User is not signed in.");
@@ -180,6 +181,55 @@ function thumbsDown() {
         }
     })
 }
+
+async function displayThumbsDown() {
+    console.log("Attempting to display thumbs up status...");
+
+    // Ensure the Firebase auth and firestore are properly initialized
+    if (!firebase.auth().currentUser) {
+        console.error("No authenticated user found.");
+        return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const docID = params.get("docID");
+    if (!docID) {
+        console.error("Document ID not found in URL.");
+        return;
+    }
+
+    const userUID = firebase.auth().currentUser.uid;
+    const threadRef = firebase.firestore().collection("threads").doc(docID);
+
+    try {
+        const doc = await threadRef.get();
+        if (!doc.exists) {
+            console.error("Document does not exist.");
+            return;
+        }
+
+        const dislikes = doc.data().dislikes || [];
+        const thumbsUpElement = document.querySelector("#thumbsDown");
+
+        if (!thumbsUpElement) {
+            console.error("Thumbs up element not found in the document.");
+            return;
+        }
+
+        if (dislikes.includes(userUID)) {
+            console.log("User has liked this document. Coloring thumbs up blue.");
+            thumbsUpElement.style.color = "red";
+        } else {
+            console.log("User has not liked this document. Coloring thumbs up black.");
+            thumbsUpElement.style.color = "black";
+        }
+    } catch (error) {
+        console.error("Error fetching document:", error);
+    }
+}
+
+// Make sure to call displayThumbsUp after the DOM is fully loaded or at the end of your HTML document to ensure elements are accessible
+document.addEventListener('DOMContentLoaded', displayThumbsUp);
 
 function displayThreadInfo() {
     let params = new URL(window.location.href);
