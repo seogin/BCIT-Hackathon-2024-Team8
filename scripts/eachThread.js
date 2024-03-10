@@ -3,26 +3,15 @@ function autoGrow(element) {
     element.style.height = element.scrollHeight + "px";
 }
 
-// function thumbsUp() {
-//     var thread = db.collection("threads");
-//     var user = authResult.user;
-//     db.collection("users").doc(user.uid).get().then((doc) => {
-//         thread.add({
-//             likes: firebase.firestore.FieldValue.arrayUnion(user.uid)
-//         });
-//     })
+function star() {
+    var starColor = document.getElementById("star").style.color;
+    if (starColor == "black") {
+        document.getElementById("star").style.color = "rgb(255, 204, 0)";
+    } else {
+        document.getElementById("star").style.color = "black";
+    }
+}
 
-// }
-
-// function thumbsUp() {
-//     let params = new URL(window.location.href);
-//     let ID = params.searchParams.get("docID");
-//     var user = firebase.auth().currentUser.uid;
-//     var thread = db.collection("threads");
-//     thread.doc(ID).update({
-//         likes: firebase.firestore.FieldValue.arrayUnion(user),
-//     });
-// }
 
 function thumbsUp() {
     if (!firebase.auth().currentUser) {
@@ -111,7 +100,7 @@ function thumbsDown() {
                     console.error("Error updating document: ", error);
                 });
         }
-    })   
+    })
 }
 
 function displayThreadInfo() {
