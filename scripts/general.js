@@ -36,6 +36,6 @@ function displayCardsDynamically(collection, category) {
 }
 
 // Display threads for the 'general' category
-displayCardsDynamically("threads", "general");
+displayCardsDynamically("threads", "General");
 
 
