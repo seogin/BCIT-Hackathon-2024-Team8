@@ -1,50 +1,55 @@
-function displaySaved() {
-  let saveTemplate = document.getElementById("saveTemplate");
-  let ID = firebase.auth().currentUser.uid;
-
-
-  db.collection("users")
-    .doc(ID)
-    .collection("favorites")
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            var data = doc.data();
-            var title = data.title;
-            var likes = data.likes.length;
-            var dislikes = data.dislikes.length;
-
-            let newThread = threadTemplate.content.cloneNode(true);
-
-            newThread.querySelector("#title").textContent = title;
-            newThread.querySelector("#likeCount").textContent = likes;
-            newThread.querySelector("#dislikeCount").textContent = dislikes;
-
-            document.getElementById(`placeholderForSaved`).appendChild(newCard);
-    });});
+// Wait for Firebase to initialize
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in, call your function to display saved documents
+    displaySavedDoc();
+  } else {
+    // User is signed out, you can handle this case if needed
+    console.log("User is not signed in.");
   }
+});
 
-displaySaved()
+// Function to display saved documents
+function displaySavedDoc() {
+  let saveTemplate = document.getElementById("saveTemplate");
+  let userID = firebase.auth().currentUser.uid;
+  let docRef = db.collection("users").doc(userID).collection("favorites");
 
+  docRef.get()
+    .then(querySnapshot => {
+      const savedData = []; // Define savedData array
 
-// function displayThreadInfo() {
-//   let params = new URL(window.location.href);
-//   let ID = params.searchParams.get("docID");
+      querySnapshot.forEach(doc => {
+        const docID = doc.id;
+        const data = doc.data();
+        savedData.push(docID);
+        console.log("Document ID:", docID);
+        console.log("Data:", data);
+      });
+      console.log(savedData);
 
-//   db.collection("threads")
-//       .doc(ID)
-//       .get()
-//       .then((doc) => {
-//           var title = doc.data().title;
-//           var likes = doc.data().likes.length;
-//           var dislikes = doc.data().dislikes.length;
-//           var description = doc.data().description;
+      savedData.forEach((docID) => {
+        db.collection("threads")
+          .doc(docID)
+          .get()
+          .then((doc) => {
+            const data = doc.data();
+            const { title, category, likes, dislikes } = data;
+            
+            const newThread = saveTemplate.content.cloneNode(true);
+            newThread.querySelector("#category").textContent = category;
+            newThread.querySelector("#title").textContent = title;
+            newThread.querySelector("#likeCount").textContent = Array.isArray(likes) ? likes.length : 0;
+            newThread.querySelector("#dislikeCount").textContent = Array.isArray(dislikes) ? dislikes.length : 0;
 
-//           document.querySelector("#thread-title").innerHTML = title;
-//           document.querySelector("#thread-likes-count").innerHTML = likes;
-//           document.querySelector("#thread-dislikes-count").innerHTML =
-//               dislikes;
-//           document.querySelector("#thread-description").innerHTML =
-//               description;
-//       });
-// }
+            document.getElementById("placeholderForSaved").appendChild(newThread);
+          })
+          .catch(error => {
+            console.error("Error getting thread document:", error);
+          });
+      });
+    })
+    .catch(error => {
+      console.error("Error getting favorites collection:", error);
+    });
+}
