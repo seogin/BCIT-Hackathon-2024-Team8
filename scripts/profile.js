@@ -87,8 +87,11 @@ function displayMyPosts() {
         newThread.querySelector("#Mytitle").textContent = title;
         newThread.querySelector("#MylikeCount").textContent = Array.isArray(likes) ? likes.length : 0;
         newThread.querySelector("#MydislikeCount").textContent = Array.isArray(dislikes) ? dislikes.length : 0;
+        var docID = doc.id;
 
-        document.getElementById("placeholderForMyPost").appendChild(newThread);
+        newThread.querySelector("a").href = `eachThread.html?docID=${docID}`;
+
+        document.getElementById("placeholderForMyPost").append(newThread);
       });
     })
     .catch(error => {
