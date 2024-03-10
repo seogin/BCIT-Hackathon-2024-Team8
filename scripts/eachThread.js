@@ -3,8 +3,7 @@ function autoGrow(element) {
     element.style.height = element.scrollHeight + "px";
 }
 
-
-function updateFavorite() {
+async function updateFavorite() {
     let params = new URL(window.location.href);
     let threadID = params.searchParams.get("docID");
     if (!threadID) {
@@ -12,42 +11,75 @@ function updateFavorite() {
         return;
     }
 
-    var userID = firebase.auth().currentUser.uid;
-    var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID)
-    if () {
-        userFavoritesRef.delete()
-            .then(() => {
-                console.log("Thread removed from favorites")
-                // window.location.href = params;
-            })
-            .catch((error) => { console.error("Error removing thread from favorites: ", error) });
+    // Assuming firebase is already initialized and available
+    let userID;
+    userID = firebase.auth().currentUser.uid;
+    var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID);
+    const doc = await userFavoritesRef.get();
+    if (doc.exists) {
+        // If the document exists, remove it from favorites
+        await userFavoritesRef.delete();
+        console.log("Thread removed from favorites");
+    } else {
+        // If the document does not exist, add it to favorites
+        await userFavoritesRef.set({ mockData: "something" }); // You might want to store additional info here
+        console.log("Thread added to favorites");
     }
-    }
-
-    // userFavoritesRef.get().then((allThreads) => {
-    //     removed = false;
-    //     allThreads.forEach((doc) => {
-    //         console.log(doc.id)
-    //         if (doc.id == threadID) {
-    //             userFavoritesRef.doc(doc.id).delete()
-    //                 .then(() => {
-    //                     console.log("Thread removed from favorites")
-    //                     removed = true;
-    //                     window.location.href = params;
-    //                 })
-    //                 .catch((error) => { console.error("Error removing thread from favorites: ", error) });
-    //         }
-    //     });
-    //     if (!removed) {
-    //         userFavoritesRef.doc(threadID).set({}) // You might want to store additional info here
-    //             .then(() => {
-    //                 console.log("Thread added to favorites")
-    //                 window.location.href = params;
-    //             })
-    //             .catch((error) => { console.error("Error adding thread to favorites: ", error) });
-    //     }
-    // });
 }
+
+
+
+// function updateFavorite() {
+//     let params = new URL(window.location.href);
+//     let threadID = params.searchParams.get("docID");
+//     if (!threadID) {
+//         console.error("Document ID not found in URL.");
+//         return;
+//     }
+
+//     var userID = firebase.auth().currentUser.uid;
+//     var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID)
+//     if (threadID == userFavoritesRef) {
+//         userFavoritesRef.delete()
+//             .then(() => {
+//                 console.log("Thread removed from favorites")
+//                 // window.location.href = params;
+//             })
+//             .catch((error) => { console.error("Error removing thread from favorites: ", error) });
+//     }
+//     else {
+//         userFavoritesRef.set({mockData: "something"}) // You might want to store additional info here
+//             .then(() => {
+//                 console.log("Thread added to favorites")
+//                 // window.location.href = params;
+//             })
+//             .catch((error) => { console.error("Error adding thread to favorites: ", error) });
+//     }
+
+// userFavoritesRef.get().then((allThreads) => {
+//     removed = false;
+//     allThreads.forEach((doc) => {
+//         console.log(doc.id)
+//         if (doc.id == threadID) {
+//             userFavoritesRef.doc(doc.id).delete()
+//                 .then(() => {
+//                     console.log("Thread removed from favorites")
+//                     removed = true;
+//                     window.location.href = params;
+//                 })
+//                 .catch((error) => { console.error("Error removing thread from favorites: ", error) });
+//         }
+//     });
+//     if (!removed) {
+//         userFavoritesRef.doc(threadID).set({}) // You might want to store additional info here
+//             .then(() => {
+//                 console.log("Thread added to favorites")
+//                 window.location.href = params;
+//             })
+//             .catch((error) => { console.error("Error adding thread to favorites: ", error) });
+//     }
+// });
+
 
 
 function thumbsUp() {
