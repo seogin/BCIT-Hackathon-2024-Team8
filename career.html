@@ -39,55 +39,57 @@
     <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="flex justify-center pt-5">
-        <div class="flex flex-col items-center bg-[#D6F5F9] rounded-xl w-[80%] pt-7 pb-2">
-            <div>
-                <h1>Career</h1>
-            </div>
-            <div class="pl-72">
-                <span class="material-symbols-outlined"> edit_square </span>
-            </div>
+    <div class="m-4">
+        <!-- Header -->
+        <div class="header flex flex-col items-center border-y-4 border-double border-black my-4 font-bold text-2xl py-2"
+            style="font-family: urbanist">
+            <h1>Career Resources</h1>
+            
         </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="flex items-center justify-center">
-        <div class="flex flex-col items-center justify-center border border-black rounded-xl w-[80%] mt-5 p-4 gap-4">
-            <div id="threadPlaceholder"></div>
+        <div class="text-right text-blue-900">
+            <a href="./makeboard.html"><span class="material-symbols-outlined text-4xl">
+                    edit_square
+                </span></a>
         </div>
-    </main>
-
-    <template id="threadTemplate">
-        <div class="container flex flex-row items-center justify-between border border-black rounded-xl p-4">
-            <div class="flex flex-col justify-between items-start gap-2">
-                <p class="text-xl" id="title">Title</p>
-                <p class="text-sm" id="timestamp">date</p>
-            </div>
-            <div class="flex flex-col justify-between items-end gap-4">
-                <div>
-                    <span class="material-symbols-outlined md-36">
-                        star
-                    </span>
+    
+        <!-- Threads -->
+        <main class="flex justify-center my-4">
+            <div id="threadPlaceholder" class="container flex flex-col justify-center items-center gap-4"></div>
+        </main>
+    
+        <template id="threadTemplate">
+            <a class="block container">
+                <div class="container flex flex-row items-center justify-between bg-slate-100 shadow-md rounded-md px-4">
+                    <div class="flex flex-col justify-between items-start gap-2">
+                        <p class="text-xl font-bold" id="title">Title</p>
+                        <p class="text-sm" id="timestamp">date</p>
+                    </div>
+                    <div class="flex flex-col justify-between items-end py-2">
+                        <div>
+                            <span class="material-symbols-outlined md-36">
+                                star
+                            </span>
+                        </div>
+                        <div class="flex flex-row gap-1 justify-center items-center">
+                            <span class="material-symbols-outlined md-18">
+                                thumb_up
+                            </span>
+                            <p id="likes-count">0</p>
+                            <span class="material-symbols-outlined md-18 ms-2">
+                                thumb_down
+                            </span>
+                            <p id="dislikes-count">0</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-row gap-1 justify-center items-center invisible">
-                    <span class="material-symbols-outlined md-18">
-                        thumb_up
-                    </span>
-                    <p id="likes-count">0</p>
-                    <span class="material-symbols-outlined md-18 ms-2">
-                        thumb_down
-                    </span>
-                    <p id="dislikes-count">0</p>
-                </div>
-            </div>
-        </div>
-    </template>
-    <!-- Footer -->
+            </a>
+        </template>
+        <!-- Footer -->
 
     <!-- Scripts -->
     <script src="./scripts/firebaseAPI_hackathon.js"></script>
     <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/general.js"></script>
+    <script src="./scripts/career.js"></script>
     <script src="./scripts/skeleton.js"></script>
 </body>
 
