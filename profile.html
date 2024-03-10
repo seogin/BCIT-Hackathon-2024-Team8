@@ -49,44 +49,44 @@
       </div>
     </header>
 
-  <!-- My Posts -->
-  <section class="flex flex-col">
-    <div class="flex flex-col border-b-4 border-double border-black my-4 font-bold text-2xl py-2"
-      style="font-family: urbanist">
-      My Posts
-    </div>
-    <div id="placeholderForMyPost"></div>
-  </section>
-  
-  <!-- Template for a single post -->
-  <template id="MyTemplate">
-    <div class="flex flex-col">
-      <div class="flex flex-row justify-between border-b-2 border-black pb-2">
-        <div class="flex flex-col">
-          <div id="Mycategory">CATEGORY</div>
-          <div id="Mytitle" class="font-bold">TITLE</div>
-        </div>
-        <div class="flex items-center">
-          <span class="material-symbols-outlined md-18">thumb_up</span>
-          <span id="MylikeCount">NUM</span>
-          <span class="material-symbols-outlined md-18 ms-3">thumb_down</span>
-          <span id="MydislikeCount">Num</span>
+    <!-- My Posts -->
+    <section class="flex flex-col">
+      <div class="flex flex-col border-b-4 border-double border-black my-4 font-bold text-2xl py-2"
+        style="font-family: urbanist">
+        My Posts
+      </div>
+      <div id="placeholderForMyPost"></div>
+    </section>
+
+    <!-- Template for a single post -->
+    <template id="MyTemplate">
+      <div class="flex flex-col">
+        <div class="flex flex-row justify-between border-b-2 border-black pb-2">
+          <div class="flex flex-col">
+            <div id="Mycategory">CATEGORY</div>
+            <div id="Mytitle" class="font-bold">TITLE</div>
+          </div>
+          <div class="flex items-center">
+            <span class="material-symbols-outlined md-18">thumb_up</span>
+            <span id="MylikeCount">NUM</span>
+            <span class="material-symbols-outlined md-18 ms-3">thumb_down</span>
+            <span id="MydislikeCount">Num</span>
+          </div>
         </div>
       </div>
-    </div>
-  </template>
+    </template>
 
 
     <!-- Saved -->
     <section class="container flex flex-col">
-      <div class="flex flex-col border-b-4 border-double border-black my-4 font-bold text-2xl py-2"
+      <div class="flex flex-col border-b-4 border-double border-black mt-4 font-bold text-2xl py-2 text-blue-900"
         style="font-family: urbanist">Saved</div>
       <div id="placeholderForSaved"></div>
     </section>
 
     <!-- template for card -->
     <template id="saveTemplate">
-      <div class="flex flex-col justify-between border-b-2 border-black pb-2">
+      <div class="flex flex-col justify-between border-b-2 border-black py-2">
         <div class="flex flex-col">
           <div id="category">CATEGORY</div>
           <div id="title" class="font-bold">TITLE</div>
