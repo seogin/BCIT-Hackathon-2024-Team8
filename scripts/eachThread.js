@@ -18,12 +18,16 @@ async function updateFavorite() {
         // If the document exists, remove it from favorites
         await userFavoritesRef.delete();
         console.log("Thread removed from favorites");
+        window.location.href = params;
     } else {
         // If the document does not exist, add it to favorites
         await userFavoritesRef.set({ mockData: "something" });
         console.log("Thread added to favorites");
+        window.location.href = params;
     }
 }
+
+
 
 function thumbsUp() {
     if (!firebase.auth().currentUser) {
@@ -121,28 +125,56 @@ function displayThreadInfo() {
     let params = new URL(window.location.href);
     let ID = params.searchParams.get("docID");
 
-    db.collection("threads")
-        .doc(ID)
-        .get()
-        .then((doc) => {
-            var title = doc.data().title;
-            var likes = doc.data().likes.length;
-            var dislikes = doc.data().dislikes.length;
-            var timestamp = doc.data().timestamp;
-            var description = doc.data().description;
-            var date = new Date(timestamp.seconds * 1000);
+    // Fetch thread information
+    db.collection("threads").doc(ID).get().then((doc) => {
+        if (!doc.exists) {
+            console.error("Thread not found!");
+            return;
+        }
 
-            document.querySelector("#thread-title").innerHTML = title;
-            document.querySelector("#thread-timestamp").innerHTML = date
-                .toDateString()
-                .slice(4);
-            document.querySelector("#thread-likes-count").innerHTML = likes;
-            document.querySelector("#thread-dislikes-count").innerHTML =
-                dislikes;
-            document.querySelector("#thread-description").innerHTML =
-                description;
-        });
+        var data = doc.data();
+        var title = data.title;
+        var likes = data.likes.length;
+        var dislikes = data.dislikes.length;
+        var timestamp = data.timestamp;
+        var description = data.description;
+        var date = new Date(timestamp.seconds * 1000);
+
+        // Update the DOM with thread information
+        document.querySelector("#thread-title").innerHTML = title;
+        document.querySelector("#thread-timestamp").innerHTML = date.toDateString().slice(4);
+        document.querySelector("#thread-likes-count").innerHTML = likes;
+        document.querySelector("#thread-dislikes-count").innerHTML = dislikes;
+        document.querySelector("#thread-description").innerHTML = description;
+
+        // Check and update the favorite status of the thread
+        checkAndUpdateFavoriteStatus(ID);
+    });
 }
+
+async function checkAndUpdateFavoriteStatus(threadID) {
+    // Ensure the user is logged in
+    let user = firebase.auth().currentUser;
+    if (!user) {
+        console.error("User not logged in");
+        // Optionally, handle the UI for not logged in users
+        return;
+    }
+
+    let userID = user.uid;
+    let userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID);
+
+    // Check if the thread is in the user's favorites
+    const doc = await userFavoritesRef.get();
+    if (doc.exists) {
+        // If the thread is favorited, change the star color to yellow
+        document.querySelector("#star").style.color = "rgb(255,204,0)";
+    } else {
+        // If the thread is not favorited, change the star color to black
+        document.querySelector("#star").style.color = "black";
+    }
+}
+
 
 displayThreadInfo();
 
