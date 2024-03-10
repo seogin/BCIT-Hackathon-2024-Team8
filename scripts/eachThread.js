@@ -3,18 +3,8 @@ function autoGrow(element) {
     element.style.height = element.scrollHeight + "px";
 }
 
-function star() {
-    var starColor = document.getElementById("star").style.color;
-    if (starColor == "black") {
-        document.getElementById("star").style.color = "rgb(255, 204, 0)";
-        updateFavorite(true); // Add to favorites
-    } else {
-        document.getElementById("star").style.color = "black";
-        updateFavorite(false); // Remove from favorites
-    }
-}
 
-function updateFavorite(shouldFavorite) {
+function updateFavorite() {
     let params = new URL(window.location.href);
     let threadID = params.searchParams.get("docID");
     if (!threadID) {
@@ -23,19 +13,47 @@ function updateFavorite(shouldFavorite) {
     }
 
     var userID = firebase.auth().currentUser.uid;
-    var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID);
-
-    if (shouldFavorite) {
-        // Add to favorites
-        userFavoritesRef.set({}) // You might want to store additional info here
-            .then(() => console.log("Thread added to favorites"))
-            .catch(error => console.error("Error adding thread to favorites: ", error));
-    } else {
-        // Remove from favorites
+    var userFavoritesRef = db.collection("users").doc(userID).collection("favorites").doc(threadID)
+    if () {
         userFavoritesRef.delete()
-            .then(() => console.log("Thread removed from favorites"))
-            .catch(error => console.error("Error removing thread from favorites: ", error));
+            .then(() => {
+                console.log("Thread removed from favorites")
+                // window.location.href = params;
+            })
+            .catch((error) => { console.error("Error removing thread from favorites: ", error) });
     }
+    else {
+        userFavoritesRef.set({mockData: "something"}) // You might want to store additional info here
+            .then(() => {
+                console.log("Thread added to favorites")
+                // window.location.href = params;
+            })
+            .catch((error) => { console.error("Error adding thread to favorites: ", error) });
+    }
+
+    // userFavoritesRef.get().then((allThreads) => {
+    //     removed = false;
+    //     allThreads.forEach((doc) => {
+    //         console.log(doc.id)
+    //         if (doc.id == threadID) {
+    //             userFavoritesRef.doc(doc.id).delete()
+    //                 .then(() => {
+    //                     console.log("Thread removed from favorites")
+    //                     removed = true;
+    //                     window.location.href = params;
+    //                 })
+    //                 .catch((error) => { console.error("Error removing thread from favorites: ", error) });
+    //         }
+    //     });
+    //     if (!removed) {
+    //         userFavoritesRef.doc(threadID).set({}) // You might want to store additional info here
+    //             .then(() => {
+    //                 console.log("Thread added to favorites")
+    //                 window.location.href = params;
+    //             })
+    //             .catch((error) => { console.error("Error adding thread to favorites: ", error) });
+    //     }
+    // });
 }
 
 
@@ -176,10 +194,10 @@ function submitReply(element) {
             content: text,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
-        .then(() => {
-            console.log("Reply successfully uploaded!")
-            window.location.href = params;
-        });
+            .then(() => {
+                console.log("Reply successfully uploaded!")
+                window.location.href = params;
+            });
     } else {
         alert("The textfield is empty.");
     }
