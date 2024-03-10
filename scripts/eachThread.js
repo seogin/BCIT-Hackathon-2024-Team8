@@ -261,6 +261,40 @@ function submitReply(element) {
     }
 }
 
+function sortAndDisplay(arr) {
+    time = Array();
+    let threadPlaceholder = document.getElementById("replyPlaceholder");
+
+    for (let i = 0; i < arr.length; i++) {
+        time.push(arr[i][1]);
+    }
+
+    for (let i = 1; i < time.length; i++) {
+        let current = time[i];
+        let j = i - 1;
+
+        while (j >= 0 && time[j] < current) {
+            time[j + 1] = time[j];
+            j--;
+        }
+        time[j + 1] = current;
+    }
+
+    nodes = Array();
+    for (let i = 0; i < time.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (time[i] == arr[j][1]) {
+                nodes.push(arr[j][0]);
+                break;
+            }
+        }
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+        threadPlaceholder.appendChild(nodes[i]);
+    }
+}
+
 function displayRepliesDynamically() {
     let replyTemplate = document.getElementById("replyTemplate");
     let params = new URL(window.location.href);
@@ -271,6 +305,7 @@ function displayRepliesDynamically() {
         .collection("replies")
         .get()
         .then((allThreads) => {
+            arr = Array();
             allThreads.forEach((doc) => {
                 var content = doc.data().content;
                 var likes = doc.data().likes.length;
@@ -280,16 +315,15 @@ function displayRepliesDynamically() {
                 let newReply = replyTemplate.content.cloneNode(true);
 
                 newReply.querySelector("#reply-content").innerHTML = content;
-                newReply.querySelector("#reply-timestamp").innerHTML = date
-                    .toLocaleString()
+                newReply.querySelector("#reply-timestamp").innerHTML =
+                    date.toLocaleString();
                 newReply.querySelector("#reply-likes-count").innerHTML = likes;
                 newReply.querySelector("#reply-dislikes-count").innerHTML =
                     dislikes;
 
-                document
-                    .getElementById(`replyPlaceholder`)
-                    .appendChild(newReply);
+                arr.push([newReply, timestamp]);
             });
+            sortAndDisplay(arr);
         });
 }
 
