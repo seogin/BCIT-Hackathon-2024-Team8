@@ -25,11 +25,12 @@ function submitForm() {
 
   if (choice == 'School Life') {
     choice = 'schoolLife';
+    choicezz = 'School Life';
     var thread = db.collection("threads");
 
     thread.add({
     author: firebase.auth().currentUser.uid,
-    category: choice,
+    category: choicezz,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
@@ -40,11 +41,12 @@ function submitForm() {
     });
   } else if (choice == 'Career Resources') {
     choice = 'career';
+    choicezz = 'Career';
     var thread = db.collection("threads");
 
     thread.add({
     author: firebase.auth().currentUser.uid,
-    category: choice,
+    category: choicezz,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
@@ -55,11 +57,12 @@ function submitForm() {
     });
   } else if (choice == 'Buy & Sell') {
     choice = 'buySell';
+    choicezz = 'Buy & Sell';
     var thread = db.collection("threads");
 
     thread.add({
     author: firebase.auth().currentUser.uid,
-    category: choice,
+    category: choicezz,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
@@ -70,11 +73,12 @@ function submitForm() {
     });
   } else if (choice == 'General') {
     choice = 'general';
+    choicezz = 'General';
     var thread = db.collection("threads");
 
     thread.add({
     author: firebase.auth().currentUser.uid,
-    category: choice,
+    category: choicezz,
     description: body,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     title: title,
