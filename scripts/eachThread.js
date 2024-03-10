@@ -209,19 +209,19 @@ async function displayThumbsDown() {
         }
 
         const dislikes = doc.data().dislikes || [];
-        const thumbsUpElement = document.querySelector("#thumbsDown");
+        const thumbsDownElement = document.querySelector("#thumbsDown");
 
-        if (!thumbsUpElement) {
+        if (!thumbsDownElement) {
             console.error("Thumbs up element not found in the document.");
             return;
         }
 
         if (dislikes.includes(userUID)) {
             console.log("User has liked this document. Coloring thumbs up blue.");
-            thumbsUpElement.style.color = "red";
+            thumbsDownElement.style.color = "red";
         } else {
             console.log("User has not liked this document. Coloring thumbs up black.");
-            thumbsUpElement.style.color = "black";
+            thumbsDownElement.style.color = "black";
         }
     } catch (error) {
         console.error("Error fetching document:", error);
