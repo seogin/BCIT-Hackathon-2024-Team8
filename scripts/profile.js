@@ -3,11 +3,21 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in, call your function to display saved documents
     displaySavedDoc();
+    displayUsername();
   } else {
     // User is signed out, you can handle this case if needed
     console.log("User is not signed in.");
   }
 });
+
+function displayUsername() {
+  let userID = firebase.auth().currentUser.uid;
+  console.log(userID)
+  db.collection("users").doc(userID).get().then((doc) => {
+    let username = doc.data().name;
+    document.querySelector("#username").innerHTML = username;
+  })
+}
 
 // Function to display saved documents
 function displaySavedDoc() {
