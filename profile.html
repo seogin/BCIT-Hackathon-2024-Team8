@@ -51,9 +51,9 @@
 
   <!-- My Posts -->
   <section class="flex flex-col">
-    <div class="flex flex-col border-b-4 border-double border-black mt-4 font-bold text-2xl py-2"
+    <div class="flex flex-col border-b-4 border-double border-black mt-10 font-bold text-2xl"
       style="font-family: urbanist">
-      <span class="text-blue-900">My Posts</span>
+      <span class="text-white bg-blue-900 rounded-t-lg shadow-md pb-1 px-2">My Posts</span>
     </div>
     <div id="placeholderForMyPost"></div>
   </section>
@@ -80,28 +80,31 @@
 
 
     <!-- Saved -->
-    <section class="container flex flex-col">
-      <div class="flex flex-col border-b-4 border-double border-black mt-4 font-bold text-2xl py-2 text-blue-900"
-        style="font-family: urbanist">Saved</div>
+    <section class="container flex flex-col mt-4">
+      <div class="flex flex-col border-b-4 border-double border-black mt-4 font-bold text-2xl"
+        style="font-family: urbanist">
+        <span class="text-white bg-blue-900 rounded-t-lg shadow-md pb-1 px-2">Saved</div>
       <div id="placeholderForSaved"></div>
     </section>
 
     <!-- template for card -->
     <template id="saveTemplate">
-      <div class="flex flex-col justify-between border-b-2 border-black py-2">
-        <div class="flex flex-col">
-          <div id="category">CATEGORY</div>
-          <div id="title" class="font-bold">TITLE</div>
-        </div>
-        <div class="flex items-center">
-          <span class="material-symbols-outlined md-18">
-            thumb_up
-          </span>
-          <span id="likeCount">NUM</span>
-          <span class="material-symbols-outlined md-18 ms-3">
-            thumb_down
-          </span>
-          <span id="dislikeCount">Num</span>
+      <div class="flex flex-col">
+        <div class="flex flex-row justify-between border-b-2 border-black py-2">
+          <div class="flex flex-col">
+            <div id="category">CATEGORY</div>
+            <div id="title" class="font-bold">TITLE</div>
+          </div>
+          <div class="flex items-center">
+            <span class="material-symbols-outlined md-18">
+              thumb_up
+            </span>
+            <span id="likeCount">NUM</span>
+            <span class="material-symbols-outlined md-18 ms-3">
+              thumb_down
+            </span>
+            <span id="dislikeCount">Num</span>
+          </div>
         </div>
       </div>
     </template>
