@@ -46,8 +46,51 @@ function thumbsUp() {
                 });
         }
     })
+}
 
-    
+function thumbsDown() {
+    if (!firebase.auth().currentUser) {
+        console.error("No authenticated user found.");
+        return;
+    }
+
+    let params = new URL(window.location.href);
+    let ID = params.searchParams.get("docID");
+    if (!ID) {
+        console.error("Document ID not found in URL.");
+        return;
+    }
+
+    var user = firebase.auth().currentUser.uid;
+    var thread = db.collection("threads").doc(ID);
+
+    thread.get().then((doc) => {
+        if (doc.data().dislikes.includes(user)) {
+            console.log("something")
+            thread
+                .update({
+                    dislikes: firebase.firestore.FieldValue.arrayRemove(user),
+                })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
+        else {
+            thread
+                .update({
+                    dislikes: firebase.firestore.FieldValue.arrayUnion(user),
+                })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+        }
+    })   
 }
 
 function displayThreadInfo() {
